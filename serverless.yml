@@ -1,0 +1,50 @@
+service: my-crud-backend
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  
+
+functions:
+  createBook:
+    handler: lambda_functions.createBook
+    events:
+      - http:
+          path: books
+          method: post
+
+  getBook:
+    handler: lambda_functions.getBook
+    events:
+      - http:
+          path: books/{id}
+          method: get
+
+  getBooks:
+    handler: lambda_functions.getBooks
+    events:
+      - http:
+          path: books/
+          method: get
+          
+  updateBook:
+    handler: lambda_functions.updateBook
+    events:
+      - http:
+          path: books/{id}
+          method: put
+
+  deleteBook:
+    handler: lambda_functions.deleteBook
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+    slim: true
