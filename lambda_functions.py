@@ -4,9 +4,9 @@ import pymysql
 # Connect to the RDS MySQL instance
 def get_db_connection():
     return pymysql.connect(
-        host='mybooks.ck380qchkwiz.us-east-2.rds.amazonaws.com',
-        user='admin',
-        password='fontaine2019+',
+        host='',
+        user='',
+        password='',
         database='mybooks',
         connect_timeout=5
     )
